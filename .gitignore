@@ -22,3 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+src/features/cabin/CreateCabinForm-v1.jsx
