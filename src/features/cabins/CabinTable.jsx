@@ -37,7 +37,7 @@ function CabinTable() {
   //   queryFn: getCabins,
   // });
 
-  const { data: cabins, isLoading, error } = useCabins();
+  const { cabins, isLoading, error } = useCabins();
 
   if (isLoading) return <Spinner />;
   if (error) return <div>Error loading cabins: {error.message}</div>;
