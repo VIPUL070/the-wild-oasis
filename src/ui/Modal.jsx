@@ -1,4 +1,6 @@
+import { createPortal } from 'react-dom';
 import styled from "styled-components";
+import { HiXMark } from "react-icons/hi2";
 
 const StyledModal = styled.div`
   position: fixed;
@@ -48,3 +50,21 @@ const Button = styled.button`
     color: var(--color-grey-500);
   }
 `;
+
+// React Portal : allow us to render an element outside the parent element dom , still keep element in the compo tree {modalwindow , tool, menus} = take two values jsx to render and where to render in dom still modal will be at same place in dom can pass props
+
+function Modal({children , onClose}){
+  return createPortal (
+    <Overlay>
+    <StyledModal>
+      <Button onClick={onClose}>
+        <HiXMark />
+      </Button>
+      <div>{children}</div>
+    </StyledModal>
+    </Overlay>,
+    document.body 
+  );
+}
+
+export default Modal;
