@@ -1,7 +1,6 @@
-import { createPortal } from "react-dom";
+import { createPortal } from 'react-dom';
 import styled from "styled-components";
 import { HiXMark } from "react-icons/hi2";
-import { cloneElement, createContext, useContext, useState } from "react";
 
 const StyledModal = styled.div`
   position: fixed;
@@ -54,47 +53,18 @@ const Button = styled.button`
 
 // React Portal : allow us to render an element outside the parent element dom , still keep element in the compo tree {modalwindow , tool, menus} = take two values jsx to render and where to render in dom still modal will be at same place in dom can pass props
 
-// implement compound component
-
-// 1. create a context
-const ModalContext = createContext();
-
-function Modal({ children }) {
-  const [openName, setOpenName] = useState("");
-
-  const close = () => setOpenName("");
-  const open = setOpenName;
-  return (
-    <ModalContext.Provider value={{ openName, open, close }}>
-      {children}
-    </ModalContext.Provider>
-  );
-}
-
-function Open({ children, opens: opensWindowName }) {
-  const { open } = useContext(ModalContext);
-  return cloneElement(children, { onClick: () => open(opensWindowName) });
-}
-
-function Window({ children, name }) {
-  const { openName, close } = useContext(ModalContext);
-
-  if (name !== openName) return null;
-
-  return createPortal(
+function Modal({children , onClose}){
+  return createPortal (
     <Overlay>
-      <StyledModal>
-        <Button onClick={close}>
-          <HiXMark />
-        </Button>
-        <div>{cloneElement(children , {onCloseModal : close})}</div>
-      </StyledModal>
+    <StyledModal>
+      <Button onClick={onClose}>
+        <HiXMark />
+      </Button>
+      <div>{children}</div>
+    </StyledModal>
     </Overlay>,
-    document.body
+    document.body 
   );
 }
-
-Modal.Open = Open;
-Modal.Window = Window;
 
 export default Modal;
