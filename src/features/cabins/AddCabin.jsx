@@ -23,9 +23,11 @@ import CreateCabinForm from "./CreateCabinForm";
 function AddCabin() {
   return (
     <Modal>
-      <Modal.Open opens="cabin-form">
-        <Button>Add new cabin</Button>
-      </Modal.Open>
+      <div>
+        <Modal.Open opens="cabin-form">
+          <Button>Add new cabin</Button>
+        </Modal.Open>
+      </div>
       <Modal.Window name="cabin-form">
         <CreateCabinForm />
       </Modal.Window>

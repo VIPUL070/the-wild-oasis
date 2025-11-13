@@ -54,8 +54,8 @@ const Button = styled.button`
   box-shadow: var(--shadow-50);
   cursor: pointer;
 
-  ${(props) => sizes[props.$size || "medium"]}
-  ${(props) => variations[props.$variation || "primary"]}
+  ${(props) => sizes[props.size || "medium"]}
+  ${(props) => variations[props.variation || "primary"]}
 
   &:disabled {
     cursor: not-allowed;
