@@ -1,9 +1,22 @@
+import { useBookings } from "./useBookings";
 import BookingRow from "./BookingRow";
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
+import Empty from "../../ui/Empty";
+import Spinner from "../../ui/Spinner";
 
 function BookingTable() {
-  const bookings = [];
+  const { bookings , isLoading , error } = useBookings();
+
+  if(!bookings) {
+    return(
+      <Empty resource="bookings"/>
+    );
+  }
+
+  if(error) return <div>Error loading bookings: {error.message}</div>
+
+  if(isLoading) return <Spinner />
 
   return (
     <Menus>

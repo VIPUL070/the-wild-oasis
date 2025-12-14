@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import { format, isToday } from "date-fns";
-
 import Tag from "../../ui/Tag";
 import Table from "../../ui/Table";
-
 import { formatCurrency } from "../../utils/helpers";
 import { formatDistanceFromNow } from "../../utils/helpers";
 
@@ -33,19 +31,18 @@ const Amount = styled.div`
   font-family: "Sono";
   font-weight: 500;
 `;
-
 function BookingRow({
   booking: {
-    id: bookingId,
-    created_at,
+    id : bookingId,
     startDate,
     endDate,
     numNights,
     numGuests,
+    extraPrice,
     totalPrice,
     status,
-    guests: { fullName: guestName, email },
-    cabins: { name: cabinName },
+    guests,
+    cabins,
   },
 }) {
   const statusToTagName = {
@@ -53,6 +50,10 @@ function BookingRow({
     "checked-in": "green",
     "checked-out": "silver",
   };
+  
+  const guestName = guests?.fullName || "Unknown Guest";
+  const email = guests?.email || "No email";
+  const cabinName = cabins?.name || "Unknown Cabin";
 
   return (
     <Table.Row>
