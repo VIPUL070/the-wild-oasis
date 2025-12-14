@@ -33,12 +33,12 @@ const Amount = styled.div`
 `;
 function BookingRow({
   booking: {
-    id : bookingId,
+    // id : bookingId,
     startDate,
     endDate,
     numNights,
-    numGuests,
-    extraPrice,
+    // numGuests,
+    // extraPrice,
     totalPrice,
     status,
     guests,
