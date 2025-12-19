@@ -3,7 +3,7 @@ import { login as loginApi } from "../../services/apiAuth";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-export function useLogin() { 
+export function useLogin() {
   const queryClient = useQueryClient();
 
   const navigate = useNavigate();
@@ -12,9 +12,10 @@ export function useLogin() {
 
     onSuccess: (user) => {
       console.log(user);
-      queryClient.setQueryData(["user"] , user);
+      queryClient.setQueryData(["user"], user.user);
+      queryClient.invalidateQueries({ queryKey: ["user"] });
       toast.success("User logged in successfully");
-      navigate("/dashboard");
+      navigate("/dashboard", { replace: true });
     },
 
     onError: () => {
