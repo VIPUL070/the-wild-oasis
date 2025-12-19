@@ -6,7 +6,7 @@ export function useDeleteBooking() {
   const queryClient = useQueryClient();
 
   // to delete or mutate
-  const { isLoading: isDeleting, mutate : deleteBooking } = useMutation({
+  const { isPending: isDeleting, mutate : deleteBooking } = useMutation({
     mutationFn: deleteBookingApi,
 
     onSuccess: () => {

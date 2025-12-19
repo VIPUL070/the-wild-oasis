@@ -16,7 +16,7 @@ function CreateCabinForm() {
   const { errors } = formState;
   const queryClient = useQueryClient();
 
-  const { isLoading: isCreating, mutate } = useMutation({
+  const { isPending: isCreating, mutate } = useMutation({
     mutationFn: createCabin,
 
     onSuccess: () => {
