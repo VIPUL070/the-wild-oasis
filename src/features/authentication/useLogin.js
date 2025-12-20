@@ -11,7 +11,6 @@ export function useLogin() {
     mutationFn: ({ email, password }) => loginApi({ email, password }),
 
     onSuccess: (user) => {
-      console.log(user);
       queryClient.setQueryData(["user"], user.user);
       queryClient.invalidateQueries({ queryKey: ["user"] });
       toast.success("User logged in successfully");
