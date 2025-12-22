@@ -10,7 +10,6 @@ import Booking from "./pages/Booking";
 import Cabins from "./pages/Cabins";
 import Login from "./pages/Login";
 import Settings from "./pages/Settings";
-import Users from "./pages/Users";
 import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./ui/AppLayout";
 import Checkin from "./pages/Checkin";
@@ -49,7 +48,6 @@ function App() {
             <Route path="bookings/:bookingId" element={<Booking />} />
             <Route path="checkin/:bookingId" element={<Checkin />} />
             <Route path="cabins" element={<Cabins />} />
-            <Route path="users" element={<Users />} />
             <Route path="settings" element={<Settings />} />
           </Route>
           <Route path="login" element={<Login />} />
