@@ -7,17 +7,15 @@ import Spinner from "../../ui/Spinner";
 import Pagination from "../../ui/Pagination";
 
 function BookingTable() {
-  const { bookings , isLoading , error , count} = useBookings();
-
-  if(!bookings) {
-    return(
-      <Empty resource="bookings"/>
-    );
-  }
-
-  if(error) return <div>Error loading bookings: {error.message}</div>
+  const { bookings , isLoading , count} = useBookings();
 
   if(isLoading) return <Spinner />
+  
+  if(!bookings.length) {
+    return(
+      <Empty resourceName="bookings"/>
+    );
+  }
 
   return (
     <Menus>
