@@ -14,7 +14,7 @@ import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./ui/AppLayout";
 import Checkin from "./pages/Checkin";
 import ProtectedRoute from "./ui/ProtectedRoute";
-import SignUp from "./pages/SIgnUp";
+import SignUp from "./pages/SignUp";
 import { DarkModeProvider } from "./context/DarkModeContext";
 
 //1. setup QueryClient
